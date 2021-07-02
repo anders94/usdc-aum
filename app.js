@@ -46,13 +46,25 @@ const solana = async () => {
 	return -1;
 };
 
+const tron = async () => {
+    const res = await axios.get('https://apilist.tronscan.org/api/token_trc20?limit=1&start=3318');
+
+    if (res.data && res.data.trc20_tokens && res.data.trc20_tokens[0] &&
+	res.data.trc20_tokens[0].symbol == 'USDC')
+        return Number((res.data.trc20_tokens[0].total_supply_with_decimals / (10 ** res.data.trc20_tokens[0].decimals)).toFixed(2));
+    else
+	return -1;
+
+}
+
 const main = async () => {
     const erc20supply = await erc20();
     const algorandSupply = await algorand();
     const stellarSupply = await stellar();
     const solanaSupply = await solana();
+    const tronSupply = await tron();
 
-    const total = erc20supply + algorandSupply + stellarSupply + solanaSupply;
+    const total = erc20supply + algorandSupply + stellarSupply + solanaSupply + tronSupply;
 
     const formatter = new Intl.NumberFormat('en-US', {
 	minimumFractionDigits: 2,
@@ -65,6 +77,7 @@ const main = async () => {
     console.log('      Algorand USDC:', formatter.format(algorandSupply).padStart(20));
     console.log('       Stellar USDC:', formatter.format(stellarSupply).padStart(20));
     console.log('        Solana USDC:', formatter.format(solanaSupply).padStart(20));
+    console.log('          Tron USDC:', formatter.format(tronSupply).padStart(20));
     console.log('-----------------------------------------');
     console.log('USDC in circulation:', formatter.format(total).padStart(20));
 
