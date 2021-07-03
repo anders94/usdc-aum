@@ -79,7 +79,7 @@ const main = async () => {
     console.log('        Solana USDC:', formatter.format(solanaSupply).padStart(20));
     console.log('          Tron USDC:', formatter.format(tronSupply).padStart(20));
     console.log('-----------------------------------------');
-    console.log('USDC in circulation:', formatter.format(total).padStart(20));
+    console.log('  Total USDC supply:', formatter.format(total).padStart(20));
 
 };
 
