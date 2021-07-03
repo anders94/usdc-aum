@@ -47,18 +47,15 @@ const solana = async () => {
 };
 
 const tron = async () => {
-    const res = await axios.get('https://apilist.tronscan.org/api/token_trc20?limit=50&start=3320');
+    const res = await axios.get('https://apilist.tronscan.org/api/token_trc20?contract=TEkxiTehnzSmSe2XqrBj4w32RUN966rdz8&showAll=1');
 
-    if (res.data && res.data.trc20_tokens) {
-	for (let i=0; i<res.data.trc20_tokens.length; i++) {
-	    if (res.data.trc20_tokens[i].symbol == 'USDC')
-	        return Number((res.data.trc20_tokens[i].total_supply_with_decimals / (10 ** res.data.trc20_tokens[i].decimals)).toFixed(2));
-	}
-    }
+    if (res.data.trc20_tokens[0].symbol == 'USDC')
+	return Number((res.data.trc20_tokens[0].total_supply_with_decimals / (10 ** res.data.trc20_tokens[0].decimals)).toFixed(2));
     else
 	return -1;
 
 }
+
 
 const main = async () => {
     const erc20supply = await erc20();
