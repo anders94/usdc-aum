@@ -18,14 +18,15 @@ npm install
 node app
 ```
 
-## Example Output as of 2021-06-15
+## Example Output as of 2021-07-03
 ```
 USDC Supply
 -----------------------------------------
-      Ethereum USDC:    23,117,655,733.66
-      Algorand USDC:       151,537,434.92
-       Stellar USDC:         8,939,792.70
+      Ethereum USDC:    24,681,900,738.20
+      Algorand USDC:       176,105,114.26
+       Stellar USDC:        11,249,152.85
         Solana USDC:       785,000,020.00
+          Tron USDC:       111,719,980.49
 -----------------------------------------
-USDC in circulation:    24,063,132,981.28
+  Total USDC supply:    25,765,975,005.80
 ```
